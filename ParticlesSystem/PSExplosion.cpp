@@ -14,7 +14,7 @@ PSExplosion::PSExplosion()
 
 PSExplosion::PSExplosion(vec3& postion, vec3& color)
 {
-	srand((unsigned)time(NULL));
+	//srand((unsigned)time(NULL));
 	_center_position = postion;
 	_default_color = color;
 	for (int i = 0; i < DEFAULT_NUM_PARTICLES; i++)
@@ -54,10 +54,10 @@ bool PSExplosion::update()
 Particle PSExplosion::GenerateParticle()
 {
 	// Generate random direction & speed for new particle
-	float rndX = 2 * (rand() % 10 / 10.0 - 0.5f),
-		rndY = 2 * (rand() % 10 / 10.0 - 0.5f),
-		rndZ = 2 * (rand() % 10 / 10.0 - 0.5f);
-	printf("%f, %f, %f", rndX, rndY, rndZ);
+	float rndX = 2 * ((float)rand() /RAND_MAX - 0.5f),
+		rndY = 2 * ((float)rand() / RAND_MAX - 0.5f),
+		rndZ = -(float)rand() / RAND_MAX;
+	printf("%f, %f, %f\n", rndX, rndY, rndZ);
 
 	// Create new particle at system's starting position
 	Particle part(_center_position,

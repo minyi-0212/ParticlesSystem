@@ -32,7 +32,7 @@ void ParticlesSystemUI::timer_update()
 
 void ParticlesSystemUI::ButtonExplosion_clicked()
 {
-	_ps = std::make_shared<PSExplosion>(vec3(0, 0, 0), vec3(0, 0, 255));
+	_ps = std::make_shared<PSExplosion>(vec3(1, 0, -100), vec3(0, 0, 255));
 	ui.openGLWidget->ps_init(_ps);
 	timer->start(1000);
 	ui.ButtonExplosion->setDisabled(true);
