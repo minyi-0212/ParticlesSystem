@@ -9,7 +9,8 @@ class MyGLWidget : public QGLWidget
 	Q_OBJECT
 public:
 	explicit MyGLWidget(QWidget *parent = 0);
-	void ps_init(std::shared_ptr<ParticlesSystem> ps) { _ps = ps; printf("test"); }
+	void ps_init(std::shared_ptr<ParticlesSystem> ps) { _ps = ps; }
+	void ps_reset() { _ps = nullptr; }
 	//void ps_init(ParticlesSystem* ps) {_ps = ps;}
 	void paintGL();
 

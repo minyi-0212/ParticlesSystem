@@ -114,6 +114,7 @@
     </QtRcc>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="LabelExtend.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="MyGLWidget.cpp" />
     <ClCompile Include="ParticlesSystem.cpp" />
@@ -139,6 +140,7 @@
     </QtMoc>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="LabelExtend.h" />
     <ClInclude Include="ParticlesSystem.h" />
     <ClInclude Include="PSExplosion.h" />
   </ItemGroup>

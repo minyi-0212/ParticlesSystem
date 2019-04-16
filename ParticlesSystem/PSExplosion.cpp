@@ -54,9 +54,10 @@ bool PSExplosion::update()
 Particle PSExplosion::GenerateParticle()
 {
 	// Generate random direction & speed for new particle
-	float rndX = 2 * ((float)rand() - 0.5f);
-	float rndY = 2 * ((float)rand()  - 0.5f);
-	float rndZ = 2 * ((float)rand()  - 0.5f);
+	float rndX = 2 * (rand() % 10 / 10.0 - 0.5f),
+		rndY = 2 * (rand() % 10 / 10.0 - 0.5f),
+		rndZ = 2 * (rand() % 10 / 10.0 - 0.5f);
+	printf("%f, %f, %f", rndX, rndY, rndZ);
 
 	// Create new particle at system's starting position
 	Particle part(_center_position,
