@@ -48,6 +48,12 @@
     <ClCompile Include="LabelExtend.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Environment.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="PSFountain.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <QtMoc Include="MyGLWidget.h">
@@ -75,6 +81,12 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="LabelExtend.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Environment.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="PSFountain.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

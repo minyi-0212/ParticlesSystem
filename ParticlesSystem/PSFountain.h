@@ -1,17 +1,17 @@
 #pragma once
 #include "ParticlesSystem.h"
-class PSExplosion :
+class PSFountain :
 	public ParticlesSystem
 {
 public:
-	PSExplosion();
-	PSExplosion(vec3& postion, vec3& color);
-	~PSExplosion();
+	PSFountain();
+	PSFountain(vec3& postion, vec3& color);
+	~PSFountain();
 	virtual bool update() override;
 	
 protected:
 	virtual Particle generate_particle() override;
 
 private:
-	static const int DEFAULT_NUM_PARTICLES = 1000;
+	static const int DEFAULT_NUM_PARTICLES = 5000;
 };

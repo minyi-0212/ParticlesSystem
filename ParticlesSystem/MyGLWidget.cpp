@@ -17,10 +17,12 @@ void MyGLWidget::initializeGL()
 
 void MyGLWidget::resizeGL(int w, int h) //glutReshapeFunc
 {
+	GLfloat fRatio = (GLfloat)w / (GLfloat)h;
+	GLfloat nRange = 10.0f;
 	glViewport(0, 0, (GLint)w, (GLint)h);
 	glMatrixMode(GL_PROJECTION);
 	glLoadIdentity();
-	gluPerspective(85, (GLfloat)w / (GLfloat)h, 0.1, 500);
+	gluPerspective(85, (GLfloat)w / (GLfloat)h, 0.1, 200);
 	glMatrixMode(GL_MODELVIEW);
 	glLoadIdentity();
 }
@@ -28,36 +30,22 @@ void MyGLWidget::resizeGL(int w, int h) //glutReshapeFunc
 void MyGLWidget::paintGL() //glutDisplayFunc
 {
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-	/*glLoadIdentity();
-
-	glTranslatef(-2.0, 0.0, -6.0);
-	glBegin(GL_TRIANGLES);
-	glVertex3f(-1.0, 1.0, 0.0);
-	glVertex3f(0.0, -1.0, 0.0);
-	glVertex3f(1.0, 1.0, 0.0);
-	glEnd();
-
-	glTranslatef(4.0, 0.0, 0.0);
-	glBegin(GL_QUADS);
-	glVertex3f(-1.0, 1.0, 0.0);
-	glVertex3f(-1.0, -1.0, 0.0);
-	glVertex3f(1.0, -1.0, 0.0);
-	glVertex3f(1.0, 1.0, 0.0);
-	glEnd();*/
-
 	glLoadIdentity();
 	glPointSize(10.f);
-	glColor3f(10,0,0);
 	if (_ps!= nullptr)
 	{
-		//printf("tt\n");
-		//glBegin(GL_POINTS);
-
-		float x, y, z;
+		/*glBegin(GL_POINTS);
 		for (auto p : _ps->_particles) 
 		{
-			printf("%f, %f, %f\n", p.get_position()[0], p.get_position()[1], p.get_position()[2]);
-			//glVertex3f(p.get_position()[0], p.get_position()[1], p.get_position()[2]);
+			glVertex3f(p.get_position()[0], p.get_position()[1], p.get_position()[2]);
+		}
+		glEnd();*/
+
+		float x, y, z;
+		for (auto p : _ps->_particles)
+		{
+			//printf("%f, %f, %f\n", p.get_position()[0], p.get_position()[1], p.get_position()[2]);
+			glColor3f(p.get_color()[0], p.get_color()[1], p.get_color()[2]);
 			glBegin(GL_TRIANGLE_STRIP);
 			x = p.get_position()[0], y = p.get_position()[1], z = p.get_position()[2];
 			glTexCoord2d(1, 1); glVertex3f(x + 0.5f, y + 0.5f, z);
@@ -67,18 +55,5 @@ void MyGLWidget::paintGL() //glutDisplayFunc
 			glEnd();
 		}
 	}
-
-	//glColor3f(0, 10, 0);
-	//glBegin(GL_POINTS);
-	///*glVertex3f(7.0, 0.0, -90.0);
-	//glVertex3f(-7.0, 0.0, -6.0);
-	//glVertex3f(-2.0, 5.0, -6.0);
-	//glVertex3f(-2.0, -5.0, -6.0);*/
-	//glVertex3f(0, 0, -2.0);
-	//glVertex3f(1, 0, -2.0);
-	//glVertex3f(-1, 0, -2.0);
-	//glVertex3f(0, 1, -2.0);
-	//glVertex3f(0, -1, -2.0);
-	//glEnd();
 	glFlush();
 }

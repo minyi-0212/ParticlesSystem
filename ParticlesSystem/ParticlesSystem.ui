@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>695</width>
-    <height>652</height>
+    <width>1060</width>
+    <height>956</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -19,8 +19,8 @@
      <rect>
       <x>20</x>
       <y>20</y>
-      <width>650</width>
-      <height>470</height>
+      <width>1000</width>
+      <height>800</height>
      </rect>
     </property>
     <property name="minimumSize">
@@ -31,16 +31,16 @@
     </property>
     <property name="maximumSize">
      <size>
-      <width>650</width>
-      <height>470</height>
+      <width>1000</width>
+      <height>800</height>
      </size>
     </property>
    </widget>
    <widget class="QPushButton" name="ButtonExplosion">
     <property name="geometry">
      <rect>
-      <x>90</x>
-      <y>530</y>
+      <x>180</x>
+      <y>850</y>
       <width>93</width>
       <height>28</height>
      </rect>
@@ -49,13 +49,26 @@
      <string>explosion</string>
     </property>
    </widget>
+   <widget class="QPushButton" name="ButtonFountain">
+    <property name="geometry">
+     <rect>
+      <x>300</x>
+      <y>850</y>
+      <width>93</width>
+      <height>28</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>fountain</string>
+    </property>
+   </widget>
   </widget>
   <widget class="QMenuBar" name="menuBar">
    <property name="geometry">
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>695</width>
+     <width>1060</width>
      <height>26</height>
     </rect>
    </property>

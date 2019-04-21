@@ -1,7 +1,8 @@
 #pragma once
 #include <list>
 #include <glm/glm.hpp>
-
+#include "Environment.h"
+#define rand_double (float)rand() / RAND_MAX
 using std::list;
 using glm::vec3;
 
@@ -34,10 +35,10 @@ public:
 	list<Particle> _particles;
 
 protected:
-	virtual Particle GenerateParticle() = 0;
+	virtual Particle generate_particle() = 0;
 
 	bool _need_regenerate;
 	vec3 _center_position, _default_color;
-	int _particle_max_life = 10;
+	int _particle_max_life = 100;
 };
 

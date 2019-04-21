@@ -1,39 +1,57 @@
 #include "ParticlesSystemUI.h"
-
+#define time_interval 50
 ParticlesSystemUI::ParticlesSystemUI(QWidget *parent)
 	: QMainWindow(parent)
 {
 	ui.setupUi(this);
+	Environment::get_instance().set_gravity(vec3(0.0, 9.8 * time_interval / 5000, 0));
+	Environment::get_instance().set_wind(vec3(0.002, 0, 0));
 	timer = new QTimer(this);
 	connect(timer, SIGNAL(timeout()), this, SLOT(timer_update()));
+	// the QGLWidget update
 	connect(this, SIGNAL(changed(bool)), ui.openGLWidget, SLOT(updateGL()));
-	connect(ui.ButtonExplosion, SIGNAL(clicked()), this, SLOT(ButtonExplosion_clicked()));
+	// buttons
+	connect(ui.ButtonExplosion, SIGNAL(clicked()), this, SLOT(button_explosion_clicked()));
+	connect(ui.ButtonFountain, SIGNAL(clicked()), this, SLOT(button_fountain_clicked()));
 }
 
 void ParticlesSystemUI::timer_update()
 {
-	ui.ButtonExplosion->setText("T");
 	if (!_ps->update())
 	{
 		timer->stop();
-		ui.ButtonExplosion->setText("explosion");
-		ui.ButtonExplosion->setDisabled(false);
+		//btn_ptr->setText("explosion");
+		btn_ptr->setDisabled(false);
 		ui.openGLWidget->ps_reset();
 		//delete _ps;
 		_ps = nullptr;
 	}
-	else
-	{
-		//printf("s: %d\n", _ps->particles_count());
-		ui.ButtonExplosion->setText(QString::number(_ps->particles_count()));
-	}
+	//else
+	//{
+	//	//printf("s: %d\n", _ps->particles_count());
+	//	btn_ptr->setText(QString::number(_ps->particles_count()));
+	//}
 	emit changed(true);
 }
 
-void ParticlesSystemUI::ButtonExplosion_clicked()
+void ParticlesSystemUI::button_explosion_clicked()
 {
-	_ps = std::make_shared<PSExplosion>(vec3(1, 0, -100), vec3(0, 0, 255));
+	_ps = std::make_shared<PSExplosion>(vec3(1, 50, -100), vec3(125 / 255.0, 125 / 255.0, 0));
 	ui.openGLWidget->ps_init(_ps);
-	timer->start(1000);
-	ui.ButtonExplosion->setDisabled(true);
+	if(btn_ptr)
+		btn_ptr->setDisabled(false);
+	btn_ptr = ui.ButtonExplosion;
+	btn_ptr->setDisabled(true);
+	timer->start(time_interval);
+}
+
+void ParticlesSystemUI::button_fountain_clicked()
+{
+	_ps = std::make_shared<PSFountain>(vec3(1, 50, -100), vec3(202 / 255.0, 235 / 255.0, 216 / 255.0));
+	ui.openGLWidget->ps_init(_ps);
+	if (btn_ptr)
+		btn_ptr->setDisabled(false);
+	btn_ptr = ui.ButtonFountain;
+	btn_ptr->setDisabled(true);
+	timer->start(time_interval);
 }

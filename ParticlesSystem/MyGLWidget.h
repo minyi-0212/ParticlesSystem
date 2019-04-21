@@ -3,6 +3,7 @@
 #include <QGLWidget>
 #include <memory.h>
 #include "PSExplosion.h"
+#include "PSFountain.h"
 
 class MyGLWidget : public QGLWidget
 {

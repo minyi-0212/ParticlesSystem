@@ -16,9 +16,11 @@ private:
 	QTimer *timer;
 	std::shared_ptr<ParticlesSystem> _ps;
 	//ParticlesSystem* _ps;
+	QPushButton* btn_ptr;
 
 private slots:
-	void ButtonExplosion_clicked();
+	void button_explosion_clicked();
+	void button_fountain_clicked();
 	void timer_update();
 
 signals:
