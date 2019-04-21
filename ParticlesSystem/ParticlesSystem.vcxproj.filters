@@ -54,6 +54,12 @@
     <ClCompile Include="PSFirework.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="PSLeaf.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="PSRipple.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <QtMoc Include="MyGLWidget.h">
@@ -87,6 +93,12 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="PSFirework.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="PSLeaf.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="PSRipple.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

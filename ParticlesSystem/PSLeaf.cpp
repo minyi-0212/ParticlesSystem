@@ -1,33 +1,35 @@
 #include <time.h> 
-#include "PSFountain.h"
+#include "PSLeaf.h"
 
-PSFountain::PSFountain()
+PSLeaf::PSLeaf()
 {
 	srand((unsigned)time(NULL));
 	_center_position = vec3(0);
 	_default_color = vec3(0);
+	need_texuture = true;
 	for (int i = 0; i < DEFAULT_NUM_PARTICLES; i++)
 	{
 		_particles.push_back(generate_particle());
 	}
 }
 
-PSFountain::PSFountain(vec3& postion, vec3& color)
+PSLeaf::PSLeaf(vec3& postion, vec3& color)
 {
 	srand((unsigned)time(NULL));
 	_center_position = postion;
 	_default_color = color;
+	need_texuture = true;
 	for (int i = 0; i < DEFAULT_NUM_PARTICLES; i++)
 	{
 		_particles.push_back(generate_particle());
 	}
 }
 
-PSFountain::~PSFountain()
+PSLeaf::~PSLeaf()
 {
 }
 
-bool PSFountain::update()
+bool PSLeaf::update()
 {
 	// For each particle
 	for (auto& iter = _particles.begin(); iter!= _particles.end();)
@@ -54,18 +56,21 @@ bool PSFountain::update()
 	return true;
 }
 
-Particle PSFountain::generate_particle()
+Particle PSLeaf::generate_particle()
 {
 	// Generate random direction & speed for new particle: ([-0.2 ~ 0.3](the width), [0 ~ 0.5], [-0.4 ~ 0.6])
-	float rndX = 1 + 0.5 * (rand_double - 0.4f),
-		rndY = 3 + rand_double,
-		rndZ = 2 *(rand_double - 0.4f);
+	float rndX = rand_double - 0.5f,
+		rndY = - rand_double,
+		rndZ = rand_double - 0.5f,
+		rndPX = 100 * (rand_double - 0.5f),
+		rndPY = 50,
+		rndPZ = -100 * rand_double;
 	//printf("%f, %f, %f\n", rndX, rndY, rndZ);
 
 	// Create new particle at system's starting position
-	Particle part(_center_position + vec3(rand_double, rand_double, rand_double),
+	Particle part(vec3(rndPX, rndPY, rndPZ),
 		// With generated direction and speed
-		vec3(rndX, rndY, rndZ), /*vec3(rand_double, rand_double, rand_double)*/ _default_color,
+		vec3(rndX, rndY, rndZ), _default_color,
 		// And a random starting life
 		rand() % _particle_max_life);
 

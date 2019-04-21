@@ -22,7 +22,10 @@ private slots:
 	void button_explosion_clicked();
 	void button_fountain_clicked();
 	void button_firework_clicked();
-	
+	void button_leaf_clicked();
+	void button_ripple_clicked();
+	void button_stop_clicked();
+
 	void timer_update();
 
 signals:

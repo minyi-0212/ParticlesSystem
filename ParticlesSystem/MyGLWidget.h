@@ -5,6 +5,8 @@
 #include "PSExplosion.h"
 #include "PSFountain.h"
 #include "PSFirework.h"
+#include "PSLeaf.h"
+#include "PSRipple.h"
 
 class MyGLWidget : public QGLWidget
 {
@@ -15,6 +17,7 @@ public:
 	void ps_reset() { _ps = nullptr; }
 	//void ps_init(ParticlesSystem* ps) {_ps = ps;}
 	void paintGL();
+	bool load_texture(const char* pic);
 
 signals:
 
@@ -23,6 +26,7 @@ protected:
 	void resizeGL(int w, int h);
 	std::shared_ptr<ParticlesSystem> _ps;
 	//ParticlesSystem* _ps;
+	GLuint texture;
 
 public slots:
 	void update_particles() { printf("test\n"); }

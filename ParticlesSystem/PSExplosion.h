@@ -13,5 +13,5 @@ protected:
 	virtual Particle generate_particle() override;
 
 private:
-	static const int DEFAULT_NUM_PARTICLES = 1000;
+	static const int DEFAULT_NUM_PARTICLES = 5000;
 };

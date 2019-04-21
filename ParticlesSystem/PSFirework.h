@@ -11,9 +11,9 @@ public:
 	
 protected:
 	virtual Particle generate_particle() override;
-	Particle generate_boom_particle(vec3& pos, vec3& color);
+	Particle generate_boom_particle(vec3& pos, vec3& color, float r, float theta);
 
 private:
-	static const int DEFAULT_NUM_PARTICLES = 500;
+	static const int DEFAULT_NUM_PARTICLES = 1000;
 	list<list<Particle>::iterator> _particles_fire;
 };

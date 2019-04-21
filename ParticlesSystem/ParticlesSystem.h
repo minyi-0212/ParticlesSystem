@@ -16,7 +16,7 @@ public:
 	vec3 get_velocity() { return _velocity; }
 	vec3 get_color() { return _color; }
 	int get_life() { return _life; }
-	virtual void update();
+	virtual void update(bool need_gravity = true);
 
 private:
 	vec3 _position, _velocity, _color;
@@ -33,6 +33,7 @@ public:
 		return _particles.size();
 	};
 	list<Particle> _particles;
+	bool need_texuture = false;
 
 protected:
 	virtual Particle generate_particle() = 0;
