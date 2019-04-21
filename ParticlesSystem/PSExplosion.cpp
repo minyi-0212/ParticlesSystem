@@ -6,6 +6,7 @@ PSExplosion::PSExplosion()
 	srand((unsigned)time(NULL));
 	_center_position = vec3(0);
 	_default_color = vec3(0);
+	_particle_max_life = 40;
 	for (int i = 0; i < DEFAULT_NUM_PARTICLES; i++)
 	{
 		_particles.push_back(generate_particle());
@@ -14,9 +15,10 @@ PSExplosion::PSExplosion()
 
 PSExplosion::PSExplosion(vec3& postion, vec3& color)
 {
-	//srand((unsigned)time(NULL));
+	srand((unsigned)time(NULL));
 	_center_position = postion;
 	_default_color = color;
+	_particle_max_life = 40;
 	for (int i = 0; i < DEFAULT_NUM_PARTICLES; i++)
 	{
 		_particles.push_back(generate_particle());

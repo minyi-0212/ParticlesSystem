@@ -4,6 +4,7 @@
 #include <memory.h>
 #include "PSExplosion.h"
 #include "PSFountain.h"
+#include "PSFirework.h"
 
 class MyGLWidget : public QGLWidget
 {

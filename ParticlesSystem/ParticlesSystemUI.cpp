@@ -13,6 +13,7 @@ ParticlesSystemUI::ParticlesSystemUI(QWidget *parent)
 	// buttons
 	connect(ui.ButtonExplosion, SIGNAL(clicked()), this, SLOT(button_explosion_clicked()));
 	connect(ui.ButtonFountain, SIGNAL(clicked()), this, SLOT(button_fountain_clicked()));
+	connect(ui.ButtonFirework, SIGNAL(clicked()), this, SLOT(button_firework_clicked()));
 }
 
 void ParticlesSystemUI::timer_update()
@@ -47,11 +48,22 @@ void ParticlesSystemUI::button_explosion_clicked()
 
 void ParticlesSystemUI::button_fountain_clicked()
 {
-	_ps = std::make_shared<PSFountain>(vec3(1, 50, -100), vec3(202 / 255.0, 235 / 255.0, 216 / 255.0));
+	_ps = std::make_shared<PSFountain>(vec3(-50, -50, -100), vec3(202 / 255.0, 235 / 255.0, 216 / 255.0));
 	ui.openGLWidget->ps_init(_ps);
 	if (btn_ptr)
 		btn_ptr->setDisabled(false);
 	btn_ptr = ui.ButtonFountain;
+	btn_ptr->setDisabled(true);
+	timer->start(time_interval);
+}
+
+void ParticlesSystemUI::button_firework_clicked()
+{
+	_ps = std::make_shared<PSFirework>(vec3(1, -50, -100), vec3(202 / 255.0, 235 / 255.0, 216 / 255.0));
+	ui.openGLWidget->ps_init(_ps);
+	if (btn_ptr)
+		btn_ptr->setDisabled(false);
+	btn_ptr = ui.ButtonFirework;
 	btn_ptr->setDisabled(true);
 	timer->start(time_interval);
 }

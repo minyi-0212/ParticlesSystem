@@ -21,6 +21,8 @@ private:
 private slots:
 	void button_explosion_clicked();
 	void button_fountain_clicked();
+	void button_firework_clicked();
+	
 	void timer_update();
 
 signals:
